@@ -50,7 +50,5 @@ public class Persona {
     public String toString(){
         return String.format("Nombre: %s - Apellido %s - Edad %d", 
                 getNombre(), getApellido(), getEdad());
-    }
-    
-    
+    }  
 }
