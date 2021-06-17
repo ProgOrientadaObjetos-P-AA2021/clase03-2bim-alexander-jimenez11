@@ -21,11 +21,19 @@ public class ReporteEstudiante extends Reporte {
         super(cod);
     }
 
-    public double getPromedioMatriculas() {
+    public void setLista(ArrayList<Estudiante> list) {
+        lista = list;
+    }
+
+    public void setPromedioMatriculas() {
         for (int i = 0; i < lista.size(); i++) {
             promedioMatricula += lista.get(i).getMatricula();
         }
         promedioMatricula /= lista.size();
+    }
+
+    public double getPromedioMatriculas() {
+
         return promedioMatricula;
     }
 
@@ -34,7 +42,7 @@ public class ReporteEstudiante extends Reporte {
         String cadena = "\n*********************\nREPORTE ESTUDIANTES\n";
         cadena = String.format("%s"
                 + "Codigo            : %s"
-                + "\nPromedio Matricula  : $%.2f", cadena, codigo, promedioMatricula);
+                + "\nPromedio Matricula  : $%.2f", cadena, getCodigo(), getPromedioMatriculas());
 
         return cadena;
     }

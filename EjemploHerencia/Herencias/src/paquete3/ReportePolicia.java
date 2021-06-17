@@ -21,11 +21,19 @@ public class ReportePolicia extends Reporte {
         super(cod);
     }
 
-    public double getPromedioEdad() {
+    public void setLista(ArrayList<Policia> list) {
+        lista = list;
+    }
+
+    public void setPromedioEdad() {
         for (int i = 0; i < lista.size(); i++) {
             promedioEdad += lista.get(i).getEdad();
         }
         promedioEdad /= lista.size();
+    }
+
+    public double getPromedioEdad() {
+
         return promedioEdad;
     }
 
@@ -34,7 +42,7 @@ public class ReportePolicia extends Reporte {
         String cadena = "\n*********************\nREPORTE POLICIAS\n";
         cadena = String.format("%s"
                 + "Codigo            : %s"
-                + "\nPromedio Edad  : %.2f Años", cadena, codigo, promedioEdad);
+                + "\nPromedio Edad  : $%.2f Años", cadena, getCodigo(), getPromedioEdad());
 
         return cadena;
     }
