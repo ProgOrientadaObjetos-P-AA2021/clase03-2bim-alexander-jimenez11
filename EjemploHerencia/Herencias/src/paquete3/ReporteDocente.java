@@ -1,17 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package paquete3;
 
 import herencias2.Docente;
 import java.util.ArrayList;
 
-/**
- *
- * @author Alexander
- */
 public class ReporteDocente extends Reporte {
 
     double promedioSueldo;
@@ -23,6 +14,10 @@ public class ReporteDocente extends Reporte {
 
     public void setLista(ArrayList<Docente> list) {
         lista = list;
+    }
+
+    public ArrayList<Docente> getLista() {
+        return lista;
     }
 
     public void setPromedioSueldos() {
@@ -40,9 +35,15 @@ public class ReporteDocente extends Reporte {
     public String toString() {
         String cadena = "\n*********************\nREPORTE DOCENTES\n";
         cadena = String.format("%s"
-                + "Codigo            : %s"
-                + "\nPromedio Sueldos  : %.2f", cadena, getCodigo(), getPromedioSueldos());
-
+                + "Codigo  Reporte: %s", cadena, getCodigo());
+        for (int i = 0; i < getLista().size(); i++) {
+            cadena = String.format("%s\nNombres: %s -  Edad: %d - Sueldo: $ "
+                    + "%.2f",cadena, getLista().get(i).getNombre() + " "
+                    + getLista().get(i).getApellido(),
+                    getLista().get(i).getEdad(),getLista().get(i).getSueldo());
+        }
+        cadena = String.format("%s\nPromedio Sueldos: $%.2f", cadena,
+                getPromedioSueldos());
         return cadena;
     }
 }
